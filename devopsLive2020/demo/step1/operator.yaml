@@ -1,0 +1,14 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  values:
+    global:
+      certificates:
+        - secretName: bookinfo.devops.live
+          dnsNames: [bookinfo.devops.live]
+      outboundTrafficPolicy:
+        mode: REGISTRY_ONLY
+    gateways:
+      istio-ingressgateway:
+        sds:
+          enabled: true
